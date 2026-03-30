@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>For Someone Special ❤️</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #ff9a9e, #fad0c4);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      color: white;
+      text-align: center;
+    }
+
+    .card {
+      background: rgba(0,0,0,0.3);
+      padding: 40px;
+      border-radius: 20px;
+      width: 320px;
+    }
+
+    h1 {
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 1.1em;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 10px;
+      background: #ff4b5c;
+      color: white;
+      font-size: 1em;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #ff1e3c;
+    }
+
+    #message {
+      display: none;
+      margin-top: 20px;
+      font-size: 1.2em;
+      line-height: 1.6;
+    }
+
+    .heart {
+      position: absolute;
+      color: red;
+      animation: float 4s linear infinite;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(100vh);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-10vh);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="card">
+    <h1>Hey You 💖</h1>
+    <p>You are very cute… and I have something to tell you 🥺</p>
+
+    <button onclick="showLove()">Click Here 💌</button>
+
+    <div id="message"></div>
+  </div>
+
+  <script>
+    function showLove() {
+      const text = `From the moment you came into my life… everything changed ✨
+
+The way you smile, the way you talk, the way you exist…
+it all feels like magic to me 🥺💖
+
+I don’t just like you…
+I feel something really deep for you 💫
+
+And honestly…
+you are the most special person in my world ❤️`;
+
+      let i = 0;
+      const speed = 40;
+      const messageBox = document.getElementById("message");
+
+      messageBox.style.display = "block";
+      messageBox.innerHTML = "";
+
+      function typeWriter() {
+        if (i < text.length) {
+          messageBox.innerHTML += text.charAt(i);
+          i++;
+          setTimeout(typeWriter, speed);
+        }
+      }
+
+      typeWriter();
+
+      // hearts animation
+      for (let i = 0; i < 25; i++) {
+        let heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.innerHTML = "❤️";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.fontSize = (Math.random() * 20 + 15) + "px";
+        heart.style.animationDuration = (Math.random() * 2 + 3) + "s";
+
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+          heart.remove();
+        }, 4000);
+      }
+    }
+  </script>
+
+</body>
+</html>
